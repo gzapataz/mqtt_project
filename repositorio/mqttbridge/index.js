@@ -1,9 +1,9 @@
-// Dependencias
+	// Dependencias
 
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-var redis = require("redis");
+var redis = require("redis");	
 
 
 // Servicio GET (usando express)

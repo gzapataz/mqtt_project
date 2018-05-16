@@ -1,0 +1,14 @@
+{
+  "name": "sender",
+  "version": "1.0.0",
+  "description": "Envio de mensajes a MQTT",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gabriel Zapata",
+  "license": "ISC",
+  "dependencies": {
+    "mqtt": "^2.18.0"
+  }
+}

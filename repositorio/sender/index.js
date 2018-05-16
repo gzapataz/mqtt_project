@@ -22,12 +22,19 @@ client.on('connect', function () {
 	setInterval(function(){
 		temp = newtempReading();
 		var jsonTemp = {
-			value : temp,
+			value : temp.temperature,
 			client_id: client_id
 		};
 		message = JSON.stringify(jsonTemp);
 		console.log(message);
 		client.publish('temperatura', message);
+		var jsonHum = {
+			value : temp.humidity,
+			client_id: client_id
+		};
+		message = JSON.stringify(jsonHum);
+		client.publish('humedad', message);
+		
 	}, 3000) //meke a sensor reading every second
 	
 		//client.publish('voltaje', true);

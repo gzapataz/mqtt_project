@@ -35,7 +35,7 @@ client.on('connect', function () {
 		message = JSON.stringify(jsonHum);
 		client.publish('humedad', message);
 		
-	}, 3000) //meke a sensor reading every second
+	}, 15000) //meke a sensor reading every 10 seconds
 	
 		//client.publish('voltaje', true);
 		//client.publish('humedad', true);

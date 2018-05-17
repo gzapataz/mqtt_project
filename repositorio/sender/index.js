@@ -23,14 +23,14 @@ client.on('connect', function () {
 		temp = newtempReading();
 		var jsonTemp = {
 			value : temp.temperature,
-			client_id: client_id
+			clientid: client_id
 		};
 		message = JSON.stringify(jsonTemp);
 		console.log(message);
 		client.publish('temperatura', message);
 		var jsonHum = {
 			value : temp.humidity,
-			client_id: client_id
+			clientid: client_id
 		};
 		message = JSON.stringify(jsonHum);
 		client.publish('humedad', message);

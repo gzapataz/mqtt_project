@@ -1,16 +1,20 @@
 var mqtt    = require('mqtt');
 var sensorLib = require('node-dht-sensor');
+var gpio = require("pi-gpio");
 var client  = mqtt.connect(process.env.BASE_MQTT_URL);
 var client_id = process.env.BASE_IOT_CLIENTID
 
 console.log('start sender message');
 var temp = 0;
+var tempLight = 0;
 var message ='';
 var i=0;
 
 // Setup sensor, exit if failed
 var sensorType = 22; // DHT22, AM2302
 var sensorPin  = 4;  // The GPIO pin number for sensor signal
+var ldr = 7;  //Light Sensor GPIO Pin
+
 if (!sensorLib.initialize(sensorType, sensorPin)) {
     console.warn('No se inicializo el sensor');
     process.exit(1);
@@ -20,6 +24,15 @@ if (!sensorLib.initialize(sensorType, sensorPin)) {
 // Connection to topics: Temperatura, Voltaje y Humedad in mosquitto
 client.on('connect', function () {
 	setInterval(function(){
+		
+		tempLight = newLigthReading();
+		var jsonLight = {
+			value : tempLight,
+			clientid: client_id
+		};
+		
+		console.log('Light: ' + jsonLight);
+		
 		temp = newtempReading();
 		var jsonTemp = {
 			value : temp.temperature,

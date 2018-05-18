@@ -14,29 +14,16 @@ var i=0;
 var sensorType = 22; // DHT22, AM2302
 var sensorPin  = 4;  // The GPIO pin number for sensor signal
 var ldr = 7;  //Light Sensor GPIO Pin
-var led = 22; 
+
 
 if (!sensorLib.initialize(sensorType, sensorPin)) {
     console.warn('No se inicializo el sensor');
     process.exit(1);
 }
 
-console.log("exporting ports with gpio-admin");
-gpio.open(ldr, "in", function() {
-			newLigthReading();
-});
-
 // Connection to topics: Temperatura, Voltaje y Humedad in mosquitto
 client.on('connect', function () {
 	setInterval(function(){
-		
-		tempLight = newLigthReading();
-		var jsonLight = {
-			value : tempLight,
-			clientid: client_id
-		};
-		
-		console.log('Light: ' + jsonLight);
 		
 		temp = newtempReading();
 		var jsonTemp = {
@@ -64,16 +51,6 @@ client.on('connect', function () {
 function newtempReading() {
 	var readout = sensorLib.read();
     return readout;
-	//return Math.random()*10; 
-}
-
-// Read Light sensor 
-function newLigthReading() {
-	gpio.read(ldr, function(err, value) {
-		console.log('Light: ' + value);
-		return value;
-
-	});
 	//return Math.random()*10; 
 }
 

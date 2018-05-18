@@ -25,7 +25,7 @@ console.log("exporting ports with gpio-admin");
 gpio.open(ldr, "in", function() {
 	gpio.open(led, "out", function() {
 		console.log("ports are exported, starting read/write cycle");
-		doRead();
+		newLigthReading();
 	});
 });
 

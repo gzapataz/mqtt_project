@@ -23,10 +23,7 @@ if (!sensorLib.initialize(sensorType, sensorPin)) {
 
 console.log("exporting ports with gpio-admin");
 gpio.open(ldr, "in", function() {
-	gpio.open(led, "out", function() {
-		console.log("ports are exported, starting read/write cycle");
-		newLigthReading();
-	});
+			newLigthReading();
 });
 
 // Connection to topics: Temperatura, Voltaje y Humedad in mosquitto
@@ -72,7 +69,7 @@ function newtempReading() {
 
 // Read Light sensor 
 function newLigthReading() {
-	gpio.read(ldr, readout, function(err, value) {
+	gpio.read(ldr, function(err, value) {
 		console.log('Light: ' + value);
 	});
 	return readout;

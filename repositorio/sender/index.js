@@ -14,6 +14,7 @@ var i=0;
 var sensorType = 22; // DHT22, AM2302
 var sensorPin  = 4;  // The GPIO pin number for sensor signal
 var ldr = 7;  //Light Sensor GPIO Pin
+var led = 22; 
 
 if (!sensorLib.initialize(sensorType, sensorPin)) {
     console.warn('No se inicializo el sensor');

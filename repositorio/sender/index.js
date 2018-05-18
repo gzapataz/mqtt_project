@@ -71,8 +71,9 @@ function newtempReading() {
 function newLigthReading() {
 	gpio.read(ldr, function(err, value) {
 		console.log('Light: ' + value);
+		return value;
+
 	});
-	return readout;
 	//return Math.random()*10; 
 }
 

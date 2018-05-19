@@ -31,3 +31,9 @@ Repositorio/Mqttbridge
 
 Contiene el codigo Bridge entre Mosquitto MQTT y KAFKA para los topicos
 Temperatura, Voltaje, Humedad
+
+Repositorio/Arduino
+Contiene el codigo para controlar un sensor LDR y enviar la informacion via ESP8266 a un servidor en Node JS via HTTP GET
+
+Repositorio/Receiver
+Modulo que recibe la informacion desde Arduino y envia a una cola MQTT
